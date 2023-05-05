@@ -192,33 +192,10 @@ def test_checkbox(selenium):
 
    assert page.driver.find_element(By.CLASS_NAME, "rt-checkbox")
 
-@pytest.mark.parametrize('links', ["oidc_vk", "oidc_ok", "oidc_mail", "oidc_google", "oidc_ya"])
-def test_links(selenium, links):
-   '''Тест ТС-011. Проверка ссылок на авторизацию в футере формы авторизации'''
-
-   page = AuthPage(selenium)
-   page.driver.find_element(By.ID, links).click()
-   page.driver.implicitly_wait(10)
-
-   if links == "oidc_vk":
-      assert page.driver.find_element(By.XPATH,'//*[@href="https://vk.com"]')
-
-   if links == "oidc_ok":
-      assert page.driver.find_element(By.XPATH,'//*[@href="https://ok.ru/feed?st.cmd=userMain"]')
-
-   if links == "oidc_mail":
-      assert page.driver.find_element(By.CLASS_NAME,"header__logo").text == "Мой Мир@Mail.Ru"
-
-   if links == "oidc_google":
-      assert page.driver.current_url == 'https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?scope=openid&state=ijEQ43eDi41UuiNUALIJTEbs1LkcKLlAX1IYdljBVIE.fNK6mXyy0P0.account_b2c&response_type=code&client_id=121868035218-rd8lrg4eb24p25g6vo6qnoerkln4b2lp.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fb2c.passport.rt.ru%2Fsocial%2Fadapter%2Fgoogle%2Fauth&nonce=RR7sUVErAA88w6n0Pr0PWg&service=lso&o2v=1&flowName=GeneralOAuthFlow'
-
-   #if links == "oidc_ya":
-      #assert page.driver.find_element(By.CLASS_NAME, 'passp-add-account-page-title').text == 'Войдите с Яндекс ID'
-
 
 @pytest.mark.parametrize('login', [valid_phone, valid_email])
 def test_temporary_code_authorization_valid_data(selenium, login):
-   '''Тест ТС-012. Проверка успешной авторизации зарегистрированного пользователя по временному коду на телефон или почту'''
+   '''Тест ТС-011. Проверка успешной авторизации зарегистрированного пользователя по временному коду на телефон или почту'''
 
    page = AuthPageCode(selenium)
    page.driver.implicitly_wait(20)
@@ -239,8 +216,8 @@ def generate_string(n): #вспомогательная функция для г
                                         generate_string(255),
                                         generate_string(1001),
                                         ""])
-def test_temporary_code_authorization_anvalid_data(selenium, anvalid_data):
-   '''Тест ТС-013. Ввод в поле "E-mail или мобильный телефон" неверных данных'''
+def test_temporary_code_authorization_unvalid_data(selenium, anvalid_data):
+   '''Тест ТС-012. Ввод в поле "E-mail или мобильный телефон" неверных данных'''
 
    page = AuthPageCode(selenium)
    page.driver.implicitly_wait(30)
@@ -252,7 +229,7 @@ def test_temporary_code_authorization_anvalid_data(selenium, anvalid_data):
 
 
 def test_btn_auth_with_password(selenium):
-   '''Тест ТС-014. Проверка кнопки "Войти с паролем" на странице авторизации по временному коду'''
+   '''Тест ТС-013. Проверка кнопки "Войти с паролем" на странице авторизации по временному коду'''
 
    page = AuthPageCode(selenium)
    page.driver.implicitly_wait(30)

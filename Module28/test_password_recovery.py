@@ -9,7 +9,7 @@ from time import sleep
 
 @pytest.mark.parametrize('data', [valid_phone, valid_email])
 def test_recovery_password_with_valid_data(selenium, data):
-   '''Тест ТС-015. Проверяем, что зарегистрированный в системе пользователь может успешно
+   '''Тест ТС-014. Проверяем, что зарегистрированный в системе пользователь может успешно
    поменять пароль через форму восстановления пароля'''
 
    page = ForgetPasswordPage(selenium)
@@ -46,7 +46,7 @@ def test_recovery_password_with_valid_data(selenium, data):
 
 
 def test_recovery_password_with_email_only(selenium):
-   '''Тест ТС-016. Проверяем, что, если  в учетной записи прикреплена только электронная почта (без телефона)
+   '''Тест ТС-015. Проверяем, что, если  в учетной записи прикреплена только электронная почта (без телефона)
    ,то система сразу переходит к сценарию восстановления пароля по номеру телефона
    (не переходя к окну выбора варинта воостановления пароля)'''
 
@@ -64,7 +64,7 @@ def test_recovery_password_with_email_only(selenium):
 
 
 def test_automatic_tab_switch_reset_password_page(selenium):
-   '''Тест ТС-017. Проверяем, что при введении разного формата данных на странице восстановления пароля,
+   '''Тест ТС-016. Проверяем, что при введении разного формата данных на странице восстановления пароля,
    таб выбора способа авторизации меняется автоматически'''
 
    page = ForgetPasswordPage(selenium)
@@ -107,7 +107,7 @@ def test_automatic_tab_switch_reset_password_page(selenium):
 
 
 def test_tab_by_default_reset_password_page(selenium):
-   '''Тест ТС-018. Проверка того, что по умолчанию выбран таб по номеру телефону'''
+   '''Тест ТС-017. Проверка того, что по умолчанию выбран таб по номеру телефону'''
 
    page = ForgetPasswordPage(selenium)
 
@@ -115,7 +115,7 @@ def test_tab_by_default_reset_password_page(selenium):
 
 
 def test_recovery_password_with_unvalid_data(selenium):
-   '''Тест ТС-019. Проверяем, что при попытке восстановления пароля
+   '''Тест ТС-018. Проверяем, что при попытке восстановления пароля
    незарегистрированным в системе пользователем и вводе не совпадающей с картинкой капчи
    системой выводится информационное сообщение с ошибкой'''
 
@@ -132,7 +132,7 @@ def test_recovery_password_with_unvalid_data(selenium):
 
 
 def test_back_button(selenium):
-   '''Тест ТС-020. Проверяем, что нопка "Вернуться назад" ведет на страницу авторизации'''
+   '''Тест ТС-019. Проверяем, что нопка "Вернуться назад" ведет на страницу авторизации'''
 
    page = ForgetPasswordPage(selenium)
 

@@ -5,7 +5,7 @@ from pages.locators import Registration
 
 
 def test_registration_with_valid_data(selenium):
-   '''Тест ТС-021. Проверяем, что новый  пользователь может успешно зарегистрироваться с корректными данными'''
+   '''Тест ТС-020. Проверяем, что новый  пользователь может успешно зарегистрироваться с корректными данными'''
    #проверяю регистрацию только до проверочного кода, так как указанная электронная почта в реальности не существует
 
    page = Registr(selenium)
@@ -26,7 +26,7 @@ def test_registration_with_valid_data(selenium):
    assert page.driver.find_element(By.ID, "rt-code-0")
 
 def test_registration_with_registered_data(selenium):
-   '''Тест ТС-022. Попытка регистрации пользователя по уже зарегистрированному в системе номеру телефона'''
+   '''Тест ТС-021. Попытка регистрации пользователя по уже зарегистрированному в системе номеру телефона'''
 
 
    page = Registr(selenium)
@@ -58,7 +58,7 @@ def generate_string(n): #вспомогательная функция для г
                                         generate_string(1001)])
 
 def test_name_field_negativ(selenium, data):
-   '''Тест ТС-023. Проверка поля "Имя" при регистрации нового пользователя на ввод некоррекных данных '''
+   '''Тест ТС-022. Проверка поля "Имя" при регистрации нового пользователя на ввод некоррекных данных '''
 
 
    page = Registr(selenium)
@@ -79,7 +79,7 @@ def test_name_field_negativ(selenium, data):
                                         generate_string(255),
                                         generate_string(1001)])
 def test_surname_field_negativ(selenium, data):
-   '''Тест ТС-024. Проверка поля "Фамилия" при регистрации нового пользователя на ввод некоррекных данных '''
+   '''Тест ТС-023. Проверка поля "Фамилия" при регистрации нового пользователя на ввод некоррекных данных '''
 
 
    page = Registr(selenium)
@@ -96,7 +96,7 @@ def test_surname_field_negativ(selenium, data):
 @pytest.mark.parametrize('data', ["12345абв", "12345678" , "12345abc", "12345ABC", "123", "abcdefge"
                                         "№$#!@*", "", generate_string(255), generate_string(1001)])
 def test_password_field_negativ(selenium, data):
-   '''Тест 025.Проверка поля "Пароль" при регистрации нового пользователя на ввод некоррекных данных '''
+   '''Тест 024.Проверка поля "Пароль" при регистрации нового пользователя на ввод некоррекных данных '''
 
 
    page = Registr(selenium)
